@@ -169,9 +169,20 @@ main {
   transform: translate(1px, 1px);
 }
 
-/*** ABOUT PAGE ***/
+.about-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
 .about-hero-image {
+  width: 100%;
   max-width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
 }
 
 .about-page-content {
@@ -195,6 +206,11 @@ main {
   padding-bottom: 32px;
   margin-inline: 27px;
   border-radius: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .about-page-cta h2 {
