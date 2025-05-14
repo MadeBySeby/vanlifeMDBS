@@ -252,7 +252,7 @@ main {
 }
 
 .van-tile img {
-  max-width: 100%;
+  min-width: 100%;
   border-radius: 5px;
 }
 
@@ -335,11 +335,13 @@ i[class*="van-type-"] {
 
 .van-detail {
   display: flex;
+
   flex-direction: column;
   color: #161616;
 }
 
 .van-detail img {
+  width: 50%;
   border-radius: 5px;
   margin-block: 47px;
 }
@@ -367,6 +369,8 @@ i[class*="van-type-"] {
   background-color: #ff8c38;
   color: white;
   font-size: 1.125rem;
+  max-width: 500px;
+  margin-bottom: 10px;
 }
 
 .host-nav {
