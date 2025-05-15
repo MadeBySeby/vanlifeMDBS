@@ -4,8 +4,11 @@ import { Link, useSearchParams } from "react-router-dom";
 import { getVans } from "../../api";
 export default function Vans() {
   const [vans, setVans] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const typeFilter = searchParams.get("type");
+  console.log(typeFilter);
   useEffect(() => {
     const fetchVans = async () => {
       setLoading(true);
@@ -20,8 +23,10 @@ export default function Vans() {
     };
     fetchVans();
   }, []);
-
-  const vanElements = vans.map((van) => {
+  const displayedVans = typeFilter
+    ? vans.filter((van) => van.type === typeFilter)
+    : vans;
+  const vanElements = displayedVans.map((van) => {
     return (
       <div key={van.id} className="van-tile">
         <Link
@@ -44,17 +49,27 @@ export default function Vans() {
       </div>
     );
   });
-
+  function handleFilterChange(key, value) {
+    setSearchParams((prev) => {
+      if (value === null) {
+        prev.delete(key);
+      } else {
+        prev.set(key, value);
+      }
+      return prev;
+    });
+  }
   if (loading) {
     return <h1>Loading...</h1>;
   }
   if (error) {
     return <h1>{error}</h1>;
   }
+
   return (
     <div className="van-list-container">
       <h1>Explore our van options</h1>
-      {/* <div className="van-list-filter-buttons">
+      <div className="van-list-filter-buttons">
         <button
           onClick={() => handleFilterChange("type", "simple")}
           className={`van-type simple 
@@ -81,7 +96,7 @@ export default function Vans() {
             Clear filter
           </button>
         ) : null}
-      </div> */}
+      </div>
       <div className="van-list">{vanElements}</div>
     </div>
   );

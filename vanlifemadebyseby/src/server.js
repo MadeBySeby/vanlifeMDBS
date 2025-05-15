@@ -97,22 +97,23 @@ createServer({
       const id = request.params.id;
       return schema.vans.findBy({ id, hostId: "123" });
     });
+    this.post("/login", (schema, request) => {
+      const creds = JSON.parse(request.requestBody);
+      const { email, password } = creds;
+
+      if (email === "seby@gmail.com" && password === "123") {
+        console.log("Login successful for:", email);
+        return {
+          user: {
+            id: "1",
+            email,
+            name: "Admin User",
+          },
+          token: "fake-login-token",
+        };
+      }
+
+      return new Response(401, {}, { message: "Invalid email or password" });
+    });
   },
-});
-this.post("/login", (schema, request) => {
-  const creds = JSON.parse(request.requestBody);
-  const { email, password } = creds;
-
-  if (email === "admin@admin.com" && password === "123123") {
-    return {
-      user: {
-        id: "1",
-        email,
-        name: "Admin User",
-      },
-      token: "fake-login-token",
-    };
-  }
-
-  return new Response(401, {}, { message: "Invalid email or password" });
 });
