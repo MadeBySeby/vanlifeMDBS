@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams, Link } from "react-router-dom";
 import { getVans } from "../../api";
 export default function VanDetail() {
-  //   const location = useLocation();
   const [van, setVan] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { id } = useParams();
+  const location = useLocation();
+  const search = location.state?.search || "";
+  console.log(search);
+  const type = location.state?.type || "all";
   useEffect(() => {
     async function loadVan() {
       setLoading(true);
@@ -32,8 +35,7 @@ export default function VanDetail() {
   }
   return (
     <div className="van-detail-container">
-      {/* <Link to={`..${search}`} relative="path" className="back-button"> */}
-      <Link to={`..`} relative="path" className="back-button">
+      <Link to={`..${search}`} relative="path" className="back-button">
         &larr; <span>Back to all vans</span>
         {/* &larr; <span>Back to {type} vans</span> */}
       </Link>
