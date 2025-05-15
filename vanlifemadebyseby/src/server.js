@@ -99,3 +99,20 @@ createServer({
     });
   },
 });
+this.post("/login", (schema, request) => {
+  const creds = JSON.parse(request.requestBody);
+  const { email, password } = creds;
+
+  if (email === "admin@admin.com" && password === "123123") {
+    return {
+      user: {
+        id: "1",
+        email,
+        name: "Admin User",
+      },
+      token: "fake-login-token",
+    };
+  }
+
+  return new Response(401, {}, { message: "Invalid email or password" });
+});

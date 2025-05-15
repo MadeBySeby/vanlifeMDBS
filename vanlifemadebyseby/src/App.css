@@ -328,7 +328,6 @@ header .login-link {
 .host-van-detail {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .host-van-detail img {
@@ -346,7 +345,7 @@ header .login-link {
 
 .host-van-price {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: lighter;
 }
 
 .host-van-detail-info > h4 {
@@ -411,7 +410,8 @@ header .login-link {
 }
 
 /*** DASHBOARD ***/
-.dashboard {
+.dashboard,
+.income-page {
   display: flex;
   justify-content: center;
   flex-direction: column;
