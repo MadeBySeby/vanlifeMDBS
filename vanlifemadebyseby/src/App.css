@@ -49,7 +49,7 @@ header .site-logo {
   margin-right: auto;
   text-transform: uppercase;
   font-weight: 900;
-  font-size: clamp(18px, 5vw, 25px); /* Responsive font size */
+  font-size: clamp(18px, 5vw, 25px);
 }
 
 header a {
@@ -81,7 +81,6 @@ nav {
   margin-left: 5px;
 }
 
-/* On small screens, make header items stack if needed */
 @media (max-width: 480px) {
   header {
     flex-direction: column;
