@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, Link, Navigate } from "react-router-dom";
 export default function Header() {
   const activeStyle = {
@@ -6,6 +6,12 @@ export default function Header() {
     textDecoration: "underline",
     color: "#161616",
   };
+  //   useEffect(() => {
+  //     const isLogged = localStorage.getItem("loggedIn");
+  //     if (!isLogged) {
+  //       alert("You must be logged in to access this page");
+  //     }
+  //   }, [isLogged]);
   const isLogged = localStorage.getItem("loggedIn");
   console.log(isLogged);
   function fakeLogOut() {

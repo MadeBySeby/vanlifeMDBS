@@ -28,6 +28,7 @@ export default function Login() {
       })
       .finally(() => {
         setStatus("idle");
+        window.location.reload();
       });
   }
 
