@@ -16,6 +16,7 @@ import HostVanPhotos from "./pages/Host/HostVanPhotos";
 import Reviews from "./pages/Host/Reviews";
 import Income from "./pages/Host/Income";
 import Login from "./pages/Login";
+import PageNotFound from "./pages/PageNotFound";
 // import Vans from "./pages/Vans";
 // import Host from "./pages/Host";
 // import VanDetail from "./pages/VanDetail";
@@ -45,6 +46,7 @@ function App() {
               </Route>
             </Route>
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
